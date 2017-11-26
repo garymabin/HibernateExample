@@ -1,5 +1,7 @@
 package com.thoughtworks;
 
+import com.thoughtworks.entity.Customer;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,6 +27,12 @@ public class Main {
     public static void main(final String[] args) throws Exception {
         final Session session = getSession();
         try {
+            session.beginTransaction();
+            Customer customer = new Customer();
+            customer.setFirstName("Gary");
+            customer.setLastName("Ma");
+            session.save(customer);
+            session.getTransaction().commit();
             System.out.println("querying all the managed entities...");
         } finally {
             session.close();

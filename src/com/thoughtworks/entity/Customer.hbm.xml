@@ -5,8 +5,10 @@
 <hibernate-mapping>
 
     <class name="com.thoughtworks.entity.Customer" table="customer" schema="customer">
-        <id name="id" column="id"/>
-        <property name="firstName" column="first_name"/>
-        <property name="lastName" column="last_name"/>
+        <id name="id" column="id" type="java.lang.Long">
+            <generator class="identity"/>
+        </id>
+        <property name="firstName" column="first_name" type="java.lang.String"/>
+        <property name="lastName" column="last_name" type="java.lang.String"/>
     </class>
 </hibernate-mapping>
