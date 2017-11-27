@@ -47,7 +47,11 @@ public class Main {
 
             createSampleData(session);
 
-            Query query = session.createQuery("select customer from Customer as customer");
+            Query<Customer> query = session.createQuery("select customer from Customer as customer where customer" +
+                ".gender = " +
+                ":gender", Customer.class);
+            query.setParameter("gender", "Male");
+
             List<Customer> customers = query.list();
             for (Customer c : customers) {
                 System.out.println(c.getLastName() + " " + c.getFirstName() + " " + c.getGender());
@@ -67,7 +71,7 @@ public class Main {
             .gender("Female").build(),
             Customer.builder()
                 .firstName("Bob")
-                .lastName("Dylan").build());
+                .lastName("Dylan").gender("Male").build());
         customers.forEach(session::save);
         session.getTransaction().commit();
     }
