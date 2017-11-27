@@ -9,6 +9,8 @@ public class Customer {
     private Long id;
     private String firstName;
     private String lastName;
+    private String gender;
+    private String address;
 
     @Override
     public boolean equals(Object o) {

@@ -33,6 +33,13 @@ public class Main {
             customer.setLastName("Ma");
             session.save(customer);
             session.getTransaction().commit();
+
+            session.beginTransaction();
+            Customer customer1 = session.get(Customer.class, 1L);
+            System.out.println(customer1.getFirstName());
+            System.out.println(customer1.getLastName());
+            customer1.setGender("Male");
+            session.getTransaction().commit();
             System.out.println("querying all the managed entities...");
         } finally {
             session.close();

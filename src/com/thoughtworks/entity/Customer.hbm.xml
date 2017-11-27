@@ -10,5 +10,8 @@
         </id>
         <property name="firstName" column="first_name" type="java.lang.String"/>
         <property name="lastName" column="last_name" type="java.lang.String"/>
+        <property name="gender" column="gender" type="java.lang.String"/>
+        <property name="address" column="address" type="java.lang.String"/>
+
     </class>
 </hibernate-mapping>
