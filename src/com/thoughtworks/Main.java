@@ -1,6 +1,7 @@
 package com.thoughtworks;
 
 import com.thoughtworks.entity.Customer;
+import com.thoughtworks.entity.User;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -47,12 +48,12 @@ public class Main {
 
             createSampleData(session);
 
-            Query<Customer> query = session.createNamedQuery("findByGender", Customer.class);
+            Query<User> query = session.createNamedQuery("findUserByGender", User.class);
             query.setParameter("gender", "Male");
 
-            List<Customer> customers = query.list();
-            for (Customer c : customers) {
-                System.out.println(c.getLastName() + " " + c.getFirstName() + " " + c.getGender());
+            List<User> users = query.list();
+            for (User c : users) {
+                System.out.println(c.getLastName() + " " + c.getFirstName());
             }
 
             System.out.println("querying all the managed entities...");
