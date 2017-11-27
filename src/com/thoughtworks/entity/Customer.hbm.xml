@@ -16,4 +16,7 @@
     <query name="findUserByGender">
         <![CDATA[select new com.thoughtworks.entity.User(customer.firstName, customer.lastName) from Customer as customer where customer.gender = :gender]]>
     </query>
+    <sql-query name="findByGenderNative">
+        <![CDATA[select * from customer c where c.gender = ?]]>
+    </sql-query>
 </hibernate-mapping>

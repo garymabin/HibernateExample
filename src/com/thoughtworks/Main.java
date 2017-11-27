@@ -56,6 +56,13 @@ public class Main {
                 System.out.println(c.getLastName() + " " + c.getFirstName());
             }
 
+            Query<Customer> customerQuery = session.getNamedNativeQuery("findByGenderNative")
+                .addEntity(Customer.class).setParameter(0, "Male");
+
+            List<Customer> customers = customerQuery.list();
+            for (Customer c : customers) {
+                System.out.println(c.getLastName() + " " + c.getFirstName() + " " + c.getGender());
+            }
             System.out.println("querying all the managed entities...");
         } finally {
             session.close();
