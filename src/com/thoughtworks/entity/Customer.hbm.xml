@@ -13,4 +13,7 @@
         <property name="gender" column="gender" type="java.lang.String"/>
         <property name="address" column="address" type="java.lang.String"/>
     </class>
+    <query name="findByGender">
+        <![CDATA[select customer from Customer as customer where customer.gender = :gender]]>
+    </query>
 </hibernate-mapping>

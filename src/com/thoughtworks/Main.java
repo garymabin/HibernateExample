@@ -47,9 +47,7 @@ public class Main {
 
             createSampleData(session);
 
-            Query<Customer> query = session.createQuery("select customer from Customer as customer where customer" +
-                ".gender = " +
-                ":gender", Customer.class);
+            Query<Customer> query = session.createNamedQuery("findByGender", Customer.class);
             query.setParameter("gender", "Male");
 
             List<Customer> customers = query.list();
